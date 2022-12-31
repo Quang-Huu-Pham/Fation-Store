@@ -25,9 +25,9 @@ CART_SESSION_ID = 'cart'
 SECRET_KEY = 'django-insecure-74481ju48352*&(6w5b4fj**6y)_)+tl+m=w+qry4==zqla9rn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fation-store-production.up.railway.app']
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
