@@ -25,7 +25,7 @@ CART_SESSION_ID = 'cart'
 SECRET_KEY = 'django-insecure-74481ju48352*&(6w5b4fj**6y)_)+tl+m=w+qry4==zqla9rn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'fation-store-production.up.railway.app']
 LOGIN_URL = '/login/'
@@ -122,8 +122,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
+STATIC_ROOT = '/Users/QUANG/OneDrive/FileCode/python/FationStore'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
