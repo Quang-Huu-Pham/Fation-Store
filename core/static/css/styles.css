@@ -166,24 +166,13 @@ a:hover {
     top: 0;
     left: 0;
 }
-.products .favorite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 5px;
-    right: 15px;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-}
 .products .prod-item {
     transition: all 0.3s linear;
 }
 .products .card:hover,
 .products .card:hover a {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-color: rgb(0, 226, 57);
     color: currentColor;
 }
 
