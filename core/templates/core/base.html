@@ -22,7 +22,7 @@
     <body class="bg-light">
         <div class="container-fluid">
             <header
-                class="row align-items-center py-3 border-bottom position-fixed top-0 w-100 bg-light"
+                class="row align-items-center py-3 border-bottom position-fixed top-0 w-100 bg-white"
                 style="z-index: 2"
             >
                 <div class="col col-4 col-md-3 col-lg-3">
@@ -35,7 +35,7 @@
                             <input
                                 type="text"
                                 name="query"
-                                class="form-control"
+                                class="form-control bg-light"
                                 placeholder="Search"
                             />
                             <div class="input-group-btn btn-search">
@@ -75,17 +75,38 @@
                             </ul>
                         </div>
                         {% else %}
-                        <div class="d-flex align-items-center">
-                            <a class="btn btn-light d-none d-sm-block" href="{% url 'register' %}">Đăng ký</a>
-                            <a class="btn btn-primary d-none d-sm-block" href="{% url 'login' %}">Đăng nhập</a>
-                            <a href="{% url 'login' %}" class="d-block d-sm-none" style="height: 30px"><i class='bx bx-user-circle' style="font-size: 30px;"></i></a>
-                        </div>
+                        <a class="btn btn-primary d-none d-sm-block ms-4" href="{% url 'login' %}">Đăng nhập</a>
+                        <a href="{% url 'login' %}" class="d-block d-sm-none" style="height: 30px"><i class='bx bx-user-circle' style="font-size: 30px;"></i></a>
                         {% endif %}
                     </div>
                 </div>
             </header>
 
             {% block content %} {% endblock %}
+
+            <div class="position-fixed nav-sm p-2 rounded-pill d-block d-sm-none" style="bottom: 10px">
+                <ul class="d-flex justify-content-between w-100 px-3 py-2 m-0">
+                    <li class="nav-item mb-1">
+                        <a 
+                            class="nav-link justify-content-center px-1 rounded-2{% if not active_category %} active {% endif %}"
+                            aria-current="page"
+                            href="/"
+                        >
+                            <i class="bx bxs-store icon text-white"></i>
+                        </a>
+                    </li>
+                    {% for category in categories %}
+                        <li class="nav-item mb-1 ms-3">
+                            <a 
+                                class="nav-link justify-content-center px-1 rounded-2{% if category.slug == active_category %} active {% endif %}"
+                                href="/?category={{ category.slug }}"
+                            >
+                                <i class="bx {{category.icon}} icon text-white"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
             <footer class="bg-dark text-center text-lg-start mt-5 position-relative">
                 <!-- Grid container -->

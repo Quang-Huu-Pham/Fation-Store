@@ -21,7 +21,7 @@ def register(request):
 
 
 def index(request):
-    products = Product.objects.all()[0:6]
+    products = Product.objects.all()[0:5]
     categories = Category.objects.all()
 
     active_category = request.GET.get('category', '')
@@ -34,6 +34,11 @@ def index(request):
     if query:
         products = Product.objects.filter(
             Q(name__icontains=query))
+
+    page = request.GET.get('page', '')
+
+    if page:
+        products = Product.objects.all()[0:6+int(page)]
 
     context = {
         'products': products,
