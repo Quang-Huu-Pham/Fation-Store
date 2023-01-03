@@ -28,7 +28,7 @@ class Classify(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='static/assets')
+    image = models.ImageField(upload_to='core/static/assets')
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     price = models.IntegerField()

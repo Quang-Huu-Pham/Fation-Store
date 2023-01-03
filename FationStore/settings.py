@@ -25,7 +25,7 @@ CART_SESSION_ID = 'cart'
 SECRET_KEY = 'django-insecure-74481ju48352*&(6w5b4fj**6y)_)+tl+m=w+qry4==zqla9rn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = ['https://fation-store-production.up.railway.app']
 
