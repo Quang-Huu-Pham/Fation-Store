@@ -15,6 +15,16 @@ class Category(models.Model):
         return self.name
 
 
+class Classify(models.Model):
+    category = models.ForeignKey(
+        Category, related_name='classifies', null=True, on_delete=models.CASCADE)
+    type = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.type
+
+
 class Product(models.Model):
     category = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
@@ -26,6 +36,8 @@ class Product(models.Model):
     sale = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     sold = models.IntegerField(default=False)
+    classify = models.ForeignKey(
+        Classify, related_name='classify', null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-created_at',)
@@ -34,4 +46,4 @@ class Product(models.Model):
         return self.name
 
     def get_display_price(self):
-        return self.price / 100
+        return self.price / 1000

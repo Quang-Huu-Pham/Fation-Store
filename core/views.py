@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 
-from product.models import Product, Category
+from product.models import Product, Category, Classify
 # Create your views here.
 
 
@@ -23,6 +23,7 @@ def register(request):
 def index(request):
     products = Product.objects.all()[0:5]
     categories = Category.objects.all()
+    classifies = Classify.objects.all()
 
     active_category = request.GET.get('category', '')
 
@@ -35,6 +36,11 @@ def index(request):
         products = Product.objects.filter(
             Q(name__icontains=query))
 
+    type = request.GET.get('type', '')
+
+    if type:
+        products = Product.objects.filter(classify=type)
+
     page = request.GET.get('page', '')
 
     if page:
@@ -43,6 +49,7 @@ def index(request):
     context = {
         'products': products,
         'categories': categories,
+        'classifies': classifies,
         'active_category': active_category
     }
 
