@@ -37,7 +37,7 @@
                                 type="text"
                                 name="query"
                                 class="form-control bg-light"
-                                placeholder="Search"
+                                placeholder="Tìm kiếm..."
                             />
                             <div class="input-group-btn btn-search">
                                 <button class="btn btn-default" type="submit">
@@ -50,7 +50,13 @@
 
                 <div class="col col-4 col-md-4 col-lg-4">
                     <div class="navbar-right d-flex justify-content-end">
-                        {% include 'cart/menu_cart.html' %}
+                        <div
+                            hx-get="{% url 'hx_menu_cart' %}"
+                            hx-trigger="update-menu-cart from:body" 
+                            hx-swap="innerHTML"
+                        >
+                            {% include 'cart/menu_cart.html' %}
+                        </div>
                         
                         {% if user.username %}
                         <img
